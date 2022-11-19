@@ -5,7 +5,7 @@
 class Camera
 {
 public:
-	Camera(Point p, Vector v, double dist);
+	Camera(Point p, Vector v, double dist, double fi);
 	~Camera();
 	void SetCamearPoint(Point p);
 	void SetCamearDirection(Vector v);
@@ -24,5 +24,9 @@ private:
 	/// Plane distance
 	/// </summary>
 	double p_Dist;
+	/// <summary>
+	/// Óדמכ מבחמנא
+	/// </summary>
+	double _fi;
 };
 
