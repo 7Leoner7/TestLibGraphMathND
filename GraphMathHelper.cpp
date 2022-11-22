@@ -19,7 +19,7 @@ Vector GraphMathHelper::DotCoordsChange(double x, double y, double z)
 
 Vector GraphMathHelper::DotCoordsChange(Vector v)
 {
-    int l = v.getleng();
+    int l = v.getlengN();
     int h = this->matrix.GetMatrixHeight();
     double* vd = new double[l];
     for (int i = 0; i < l; i++)
@@ -39,10 +39,7 @@ void GraphMathHelper::SetMatrix(Matrix& MatrixN) {
     matrix = MatrixN;
 }
 
-GraphMathHelper::GraphMathHelper(Matrix& MatrixN) : matrix(MatrixN)
-{
-    SetMatrix(MatrixN);
-}
+GraphMathHelper::GraphMathHelper(Matrix& MatrixN) : matrix(MatrixN) {}
 
 GraphMathHelper::~GraphMathHelper()
 {

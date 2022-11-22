@@ -19,21 +19,21 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\TestLib\GraphMathHelper.cpp" />
-    <ClCompile Include="..\TestLib\Matrix.cpp" />
-    <ClCompile Include="..\TestLib\Point.cpp" />
-    <ClCompile Include="..\TestLib\Vector.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GraphArea.cpp" />
+    <ClCompile Include="GraphMathHelper.cpp" />
+    <ClCompile Include="Matrix.cpp" />
+    <ClCompile Include="Point.cpp" />
     <ClCompile Include="TestLibGraphMathND.cpp" />
+    <ClCompile Include="Vector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\TestLib\GraphMathHelper.h" />
-    <ClInclude Include="..\TestLib\Matrix.h" />
-    <ClInclude Include="..\TestLib\Point.h" />
-    <ClInclude Include="..\TestLib\Vector.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GraphArea.h" />
+    <ClInclude Include="GraphMathHelper.h" />
+    <ClInclude Include="Matrix.h" />
+    <ClInclude Include="Point.h" />
+    <ClInclude Include="Vector.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

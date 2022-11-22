@@ -1,7 +1,6 @@
 #pragma once
 #include "Point.h"
 #include "Vector.h"
-#include "GraphArea.h"
 
 class Camera
 {
@@ -14,7 +13,6 @@ public:
 	Point GetCamearPoint();
 	Vector GetCamearDirection();
 	double GetPlaneDistance();
-	Point GetProjection(GraphArea& ga);
 	bool PointInVisibleArea(Point p);
 private:
 	/// <summary>

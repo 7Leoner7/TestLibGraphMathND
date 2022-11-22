@@ -53,12 +53,3 @@ bool Camera::PointInVisibleArea(Point p) {
 	}
 	return true;
 }
-/// <summary>
-/// Масштабы проекций по осям
-/// </summary>
-/// <returns></returns>
-Point Camera::GetProjection(GraphArea& ga) {
-	Point res = ga.GetScreenLength();
-	res = Point(2, new double[2] {res.params[0] / res.params[1], res.params[1] / res.params[0] });
-	return res;
-}

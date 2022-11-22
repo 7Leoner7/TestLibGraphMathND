@@ -25,6 +25,12 @@ Point GraphArea::AreaPointToScreenPoint(Point p) {
 	return Point(p.n, arr);
 }
 
-Point GraphArea::GetScreenLength() {
-	return Point(2, new double[2] {this->_start.params[0] - this->_end.params[0], this->_start.params[1] - this->_end.params[1]});
+Vector GraphArea::GetScreenLength() {
+	return Vector(2, new double[2] {this->_end.params[0] - this->_start.params[0], this->_end.params[1] - this->_start.params[1]});
+}
+
+Vector GraphArea::GetCameraProjection() {
+	Vector res = this->GetScreenLength();
+	res = Vector(2, new double[2] {res.getN(0) / res.getN(1), res.getN(1) / res.getN(0) });
+	return res;
 }

@@ -20,7 +20,7 @@ public:
     /// <param name="y">Координаты по оси Y</param>
     /// <param name="z">Координаты по оси Z</param>
     Vector(double x, double y, double z);
-    
+
     /// <summary>
     /// N-мерный вектор
     /// </summary>
@@ -38,9 +38,7 @@ public:
     /// </summary>
     /// <param name="v1">Вектор</param>
     /// <returns>Вектор</returns>
-    Vector operator+(Vector v1) {
-        return sum(*this, v1);
-    };
+    Vector operator+(Vector v1);
 
     /// <summary>
     /// Умножение векторов
@@ -61,11 +59,15 @@ public:
     /// </summary>
     /// <param name="v1">Вектор</param>
     /// <returns>Вектор</returns>
-    Vector operator+=(Vector v1) {
-        return sum(*this, v1);
-    };
+    Vector operator+=(Vector v1);
 
+    /// <summary>
+    /// Присваивание
+    /// </summary>
+    /// <param name="v1"></param>
+    /// <returns></returns>
     Vector& operator=(const Vector& v1);
+
     /// <summary>
     /// Координата N
     /// </summary>
@@ -73,29 +75,17 @@ public:
     /// <returns>Значение координаты</returns>
     double getN(int n) { return this->Params[n]; }
 
-    int getleng() { return leng; }
+    int getlengN() { return leng; }
+
+    double GetLength() {
+        double n = 0;
+        for (int i = 0; i < leng; i++)
+            n += Params[i] * Params[i];
+        return sqrt(n);
+    }
 
 private:
-    Vector sum(Vector v1, Vector v2)
-    {
-        int leng0 = (v2.leng > v1.leng) ? v1.leng : v2.leng;
-        int leng1 = (v2.leng < v1.leng) ? v1.leng : v2.leng;
-        double* res = new double[leng1];
-
-        for (int i = 0; i < leng0; i++)
-            res[i] = v2.Params[i] + v1.Params[i];
-        if (v2.leng < v1.leng) {
-            for (int i = leng0; i < leng1; i++)
-                res[i] = v1.Params[i];
-        }
-        else
-        {
-            for (int i = leng0; i < leng1; i++)
-                res[i] = v2.Params[i];
-        }
-
-        return Vector(leng1, res);
-    }
+    Vector sum(Vector v1, Vector v2);
     double* Params;
     int leng;
 };

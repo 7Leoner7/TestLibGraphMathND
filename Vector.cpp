@@ -24,30 +24,34 @@ Vector::~Vector() {
 	//delete this->Params;
 }
 
-Vector Vector::operator+(Vector v1) {
-	int leng0 = (this->leng > v1.leng) ? v1.leng : this->leng;
-	int leng1 = (this->leng < v1.leng) ? v1.leng : this->leng;
+Vector Vector::sum(Vector v1, Vector v2) {
+	int leng0 = (v2.leng > v1.leng) ? v1.leng : v2.leng;
+	int leng1 = (v2.leng < v1.leng) ? v1.leng : v2.leng;
 	double* res = new double[leng1];
 
 	for (int i = 0; i < leng0; i++)
-		res[i] = this->Params[i] + v1.Params[i];
-	if (this->leng < v1.leng) {
+		res[i] = v2.Params[i] + v1.Params[i];
+	if (v2.leng < v1.leng) {
 		for (int i = leng0; i < leng1; i++)
 			res[i] = v1.Params[i];
 	}
 	else
 	{
 		for (int i = leng0; i < leng1; i++)
-			res[i] = this->Params[i];
+			res[i] = v2.Params[i];
 	}
 
 	return Vector(leng1, res);
 }
-/// <summary>
-/// Присваивание
-/// </summary>
-/// <param name="v1"></param>
-/// <returns></returns>
+
+Vector Vector::operator+(Vector v1) {
+	return sum(*this, v1);
+}
+
+Vector Vector::operator+=(Vector v1) {
+	return sum(*this, v1);
+}
+
 Vector& Vector::operator=(const Vector& v1) {
 	this->Params = v1.Params;
 	this->leng = v1.leng;

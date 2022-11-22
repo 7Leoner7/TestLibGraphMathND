@@ -9,18 +9,9 @@ using namespace std;
 
 int main()
 {
-    Point* p = (Point*)malloc(4 * sizeof(Point));
-    p[0] = Point(2, new double[2] {1, 1});
-    p[1] = Point(2, new double[2] {1, 2});
-    p[2] = Point(2, new double[2] {2, 1});
-    p[3] = Point(2, new double[2] {2, 2});
-    GraphArea ga = GraphArea(Point(2, new double[2] {0, 0}), Point(2, new double[2] {20, 20}), Vector(1, 1), Camera(Point(3, new double[3] {1, 0, 0}), Vector(-1, 0), 1.0, 3.14));
+    GraphArea ga = GraphArea(Point(2, new double[2] {1, 5}), Point(2, new double[2] {20, 20}), Vector(1, 1), Camera(Point(3, new double[3] {1, 0, 0}), Vector(-1, 0), 1.0, 3.14));
 
-    Point x = ga.ScreenPointToAreaPoint(p[0]);
-    cout << x.params[0] << ' ' << x.params[1] << '\n';
-
-    x = ga.AreaPointToScreenPoint(x);
-    cout << x.params[0] << ' ' << x.params[1];
+    
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

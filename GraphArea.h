@@ -10,7 +10,8 @@ public:
 	~GraphArea();
 	Point ScreenPointToAreaPoint(Point p);
 	Point AreaPointToScreenPoint(Point p);
-	Point GetScreenLength();
+	Vector GetScreenLength();
+	Vector GetCameraProjection();
 private:
 	/// <summary>
 	/// Начальная точка арены
