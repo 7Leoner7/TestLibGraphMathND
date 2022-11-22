@@ -10,6 +10,7 @@ public:
 	~GraphArea();
 	Point ScreenPointToAreaPoint(Point p);
 	Point AreaPointToScreenPoint(Point p);
+	Point GetScreenLength();
 private:
 	/// <summary>
 	/// Начальная точка арены

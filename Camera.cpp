@@ -20,10 +20,16 @@ void Camera::SetPlaneDistance(double dist) {
 	this->p_Dist = dist;
 }
 
+Point Camera::GetCamearPoint() { return this->CameraPoint; }
+
+Vector Camera::GetCamearDirection() { return this->direct; }
+
+double Camera::GetPlaneDistance() { return this->p_Dist; }
+
 bool Camera::PointInVisibleArea(Point p) {
 	/* 
 	\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-		///////////////////////////////////|
+	    ///////////////////////////////////|
        ////////////////////////////////////|
 	  /////////////////////////////////////|
 	{}----------------------|              |
@@ -34,9 +40,25 @@ bool Camera::PointInVisibleArea(Point p) {
 	*/
 	auto border_up = [](double x, double fi) -> double { return tan(fi) * x; };
 	auto border_down = [](double x, double fi) -> double { return tan(fi) * x * (-1); };
-	
-	if ((p.params[0] > CameraPoint.params[0] + p_Dist) && (p.params[0] < CameraPoint.params[0] + 0.001)) return false;
-	if ((border_up(p_Dist, _fi) + CameraPoint.params[1] > p.params[1]) && (border_down(p_Dist, _fi) + CameraPoint.params[1] < p.params[1])) return false;
-	else return true;
-	
+
+	if (CameraPoint.n != p.n) throw _exception();
+
+	for (int i = 0; i < CameraPoint.n - 1; i++)
+	{
+		for (int j = i + 1; j < CameraPoint.n; j++)
+		{
+			if ((p.params[i] > CameraPoint.params[i] + p_Dist) && (p.params[i] < CameraPoint.params[i] + 0.001)) return false;
+			if ((border_up(p_Dist, _fi) + CameraPoint.params[j] > p.params[j]) && (border_down(p_Dist, _fi) + CameraPoint.params[j] < p.params[j])) return false;
+		}
+	}
+	return true;
+}
+/// <summary>
+/// Масштабы проекций по осям
+/// </summary>
+/// <returns></returns>
+Point Camera::GetProjection(GraphArea& ga) {
+	Point res = ga.GetScreenLength();
+	res = Point(2, new double[2] {res.params[0] / res.params[1], res.params[1] / res.params[0] });
+	return res;
 }
